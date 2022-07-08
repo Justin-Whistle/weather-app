@@ -126,3 +126,48 @@ You should see this return in json:
 "message": "API Success!"
 }
 ```
+
+## Steps to setup app for development
+
+1.) cd into the `frontend` directory and setup a `.env` file with the following:
+
+```
+EXTERNAL_API_URL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest"
+API_KEY="<Key_You_Are_using>"
+REACT_APP_WEATHER_APP_API_URL="http://localhost:5000"
+BUILD_PATH=../backend/client/build
+```
+
+2.) Run the following under the `frontend` directory to build:
+
+```
+npm run build
+```
+
+3.) cd into the `backend` directory and setup a `.env` file with the following:
+
+```
+WEATHER_APP_API_URL="http://localhost:5000/api"
+EXTERNAL_API_URL="https://weather.visualcrossing.com/VisualCrossingWebServices/rest"
+MONGODB_URL="mongodb://localhost/weather"
+API_KEY="<Key_You_Are_using>"
+PORT=5000
+```
+
+3.) cd into the `backend` directory and setup the `package.json` with the following block for deployment:
+
+```
+"scripts": {
+  "start": "NODE_ENV=production PORT=8000 serve -s client/build & node app.js"
+},
+```
+
+4.) cd into the `backend` directory and run the following commands:
+
+```
+npm start
+```
+
+This should execute the app locally under a single directory (in this case, backend)
+Additional steps will need to be performed for setting up the env vars for the deployment since
+they should not be committed into git directly for use.
