@@ -16,6 +16,11 @@ mongoose.connect(process.env.MONGODB_URL)
 app.use(cors()); // CORS => Cross origin resource sharing; // share frontend <-> backend
 app.use(express.json());
 
+// serve static front end in production mode
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+}
+
 // setup routes
 app.get("/", (req, res) => {
   return res.json({message: "API Success!"})

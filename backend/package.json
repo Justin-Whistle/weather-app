@@ -4,11 +4,11 @@
   "description": "Backend for Weather App",
   "main": "index.js",
   "engines": {
-    "node": "17.x",
-    "npm": "8.5.1"
+    "node": "18.x",
+    "npm": "8.x"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "NODE_ENV=production PORT=8000 serve -s client/build & node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
     "fetch": "^1.1.0",
     "mongoose": "^6.3.1",
     "node-fetch": "^3.2.4",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "serve": "^13.0.4"
   }
 }
